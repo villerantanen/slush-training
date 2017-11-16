@@ -1,96 +1,20 @@
 ---
 
 - step:
-    name: Train big
+    name: Train1
     image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
     command: 
       - set -x
-      - tar xvf $VH_INPUTS_DIR/thumbs/thumbs-0915.tar
+      - tar xvf $VH_INPUTS_DIR/images/slush-20171116.tar
       - mkdir  $VH_OUTPUTS_DIR/backup 
       - ln -s $VH_OUTPUTS_DIR/backup backup
-      - ls -lah $VH_INPUTS_DIR/thumbs/
+      - ls -lah $VH_INPUTS_DIR/images/
       - ls -lah
-      - /darknet/darknet detector train data/obj.data cfg/thumbs-iso.cfg $VH_INPUTS_DIR/weights/darknet19_448.conv.23
+      - /darknet/darknet detector train data/obj.data cfg/yolo-obj.cfg $VH_INPUTS_DIR/weights/darknet19_448.conv.23
     inputs:
-      - name: thumbs
-        default: http://k.moonq.org/pub/thumbs-0915.tar
+      - name: images
+        default: http://k.moonq.org/slush/slush-20171116.tar
       - name: weights
         default: http://k.moonq.org/pub/darknet19_448.conv.23
-
-- step:
-    name: Train big more
-    image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
-    command: 
-      - set -x
-      - tar xvf $VH_INPUTS_DIR/thumbs/thumbs-0919.tar
-      - mkdir  $VH_OUTPUTS_DIR/backup 
-      - ln -s $VH_OUTPUTS_DIR/backup backup
-      - ls -lah $VH_INPUTS_DIR/thumbs/
-      - ls -lah
-      - /darknet/darknet detector train data/obj.data cfg/thumbs-iso-hires.cfg $VH_INPUTS_DIR/weights/brainz.19000.weights
-    inputs:
-      - name: thumbs
-        default: http://k.moonq.org/pub/thumbs-0919.tar
-      - name: weights
-        default: http://k.moonq.org/pub/brainz.19000.weights
-
-
-- step:
-    name: Train small
-    image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
-    command: 
-      - tar xvf $VH_INPUTS_DIR/thumbs/thumbs-0915.tar
-      - ls -lah $VH_INPUTS_DIR/thumbs/
-      - mkdir $VH_OUTPUTS_DIR/backup 
-      - ln -s $VH_OUTPUTS_DIR/backup backup
-      - /darknet/darknet detector train data/obj.data cfg/thumbs.cfg $VH_INPUTS_DIR/weights/tiny-yolo.weights
-    inputs:
-      - name: thumbs
-        default: http://k.moonq.org/pub/thumbs-0915.tar
-      - name: weights
-        default: http://k.moonq.org/pub/tiny-yolo.weights
-
-
-- step:
-    name: Worker environment check
-    image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
-    command:
-      - pwd
-      - ls -la
-      - nvidia-smi
-
-- step:
-    name: TrainTrees
-    image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
-    command: 
-      - set -x
-      - tar xvf $VH_INPUTS_DIR/trees/tree-data-0926.tar
-      - mkdir  $VH_OUTPUTS_DIR/backup 
-      - ln -s $VH_OUTPUTS_DIR/backup backup
-      - ls -lah $VH_INPUTS_DIR/trees/
-      - ls -lah
-      - /darknet/darknet detector train data/obj.data cfg/trees.cfg $VH_INPUTS_DIR/weights/darknet19_448.conv.23
-    inputs:
-      - name: trees
-        default: http://k.moonq.org/pub/tree-data-0926.tar
-      - name: weights
-        default: http://k.moonq.org/pub/darknet19_448.conv.23
-
-- step:
-    name: TrainMoreTrees
-    image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
-    command: 
-      - set -x
-      - tar xvf $VH_INPUTS_DIR/trees/tree-data-0926.tar
-      - mkdir  $VH_OUTPUTS_DIR/backup 
-      - ln -s $VH_OUTPUTS_DIR/backup backup
-      - ls -lah $VH_INPUTS_DIR/trees/
-      - ls -lah
-      - /darknet/darknet detector train data/obj.data cfg/trees.cfg $VH_INPUTS_DIR/weights/trees_6000.weights
-    inputs:
-      - name: trees
-        default: http://k.moonq.org/pub/tree-data-0926.tar
-      - name: weights
-        default: http://k.moonq.org/pub/trees_6000.weights
 
 
