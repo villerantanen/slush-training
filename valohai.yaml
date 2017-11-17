@@ -18,7 +18,7 @@
         default: http://k.moonq.org/pub/darknet19_448.conv.23
 
 - step:
-    name: Train2-tiny
+    name: tiny-train2
     image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
     command: 
       - set -x
@@ -35,7 +35,7 @@
         default: http://k.moonq.org/pub/tiny-yolo.weights
 
 - step:
-    name: Train2
+    name: train2
     image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
     command: 
       - set -x
