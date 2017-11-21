@@ -1,7 +1,7 @@
 ---
 
 - step:
-    name: Train1
+    name: train1
     image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
     command: 
       - set -x
@@ -33,21 +33,6 @@
         default: http://k.moonq.org/slush/20171117.tar
       - name: weights
         default: http://k.moonq.org/pub/tiny-yolo.weights
-
-- step:
-    name: train2
-    image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
-    command: 
-      - set -x
-      - tar xf $VH_INPUTS_DIR/images/20171117.tar
-      - mkdir  $VH_OUTPUTS_DIR/backup 
-      - ln -s $VH_OUTPUTS_DIR/backup backup
-      - /darknet/darknet detector train data/obj.data cfg/brains.1.cfg $VH_INPUTS_DIR/weights/brains.1.weights
-    inputs:
-      - name: images
-        default: http://k.moonq.org/slush/20171117.tar
-      - name: weights
-        default: http://k.moonq.org/slush/brains/brains.1.weights
 
 - step:
     name: tiny-train3
@@ -93,5 +78,20 @@
         default: http://k.moonq.org/slush/20171117.tar
       - name: weights
         default: http://k.moonq.org/slush/brains/brains.2.weights
+
+- step:
+    name: single1
+    image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
+    command: 
+      - set -x
+      - tar xf $VH_INPUTS_DIR/images/single_target1.tar
+      - mkdir  $VH_OUTPUTS_DIR/backup 
+      - ln -s $VH_OUTPUTS_DIR/backup backup
+      - /darknet/darknet detector train data/obj.data cfg/brains.single1.cfg $VH_INPUTS_DIR/weights/darknet19_448.conv.23 -gpus 0,1,2,3
+    inputs:
+      - name: images
+        default: http://k.moonq.org/slush/single_target1.tar
+      - name: weights
+        default: http://k.moonq.org/pub/darknet19_448.conv.23
 
 
