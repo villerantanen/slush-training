@@ -79,7 +79,6 @@
       - name: weights
         default: http://k.moonq.org/slush/brains/brains.2.weights
 - step:
-
     name: train3x4-2
     image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
     command: 
@@ -93,4 +92,19 @@
         default: http://k.moonq.org/slush/20171121.tar
       - name: weights
         default: http://k.moonq.org/slush/brains/brains.3x4_70000.weights
+
+- step:
+    name: train5
+    image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
+    command: 
+      - set -x
+      - tar xf $VH_INPUTS_DIR/images/5-20171121.tar
+      - mkdir  $VH_OUTPUTS_DIR/backup 
+      - ln -s $VH_OUTPUTS_DIR/backup backup
+      - /darknet/darknet detector train data/obj.data cfg/brains.5x4.cfg $VH_INPUTS_DIR/weights/darknet19_448.conv.23 -gpus 0,1,2,3
+    inputs:
+      - name: images
+        default: http://k.moonq.org/slush/5-20171121.tar
+      - name: weights
+        default: http://k.moonq.org/pub/darknet19_448.conv.23
 
