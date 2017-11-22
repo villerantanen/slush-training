@@ -106,5 +106,5 @@
       - name: images
         default: http://k.moonq.org/slush/5-20171122.tar
       - name: weights
-        default: http://k.moonq.org/slush/brains/brains.5x4_190000.weights
+        default: http://k.moonq.org/slush/brains5/brains.5x4_190000.weights
 
