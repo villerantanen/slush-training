@@ -104,7 +104,7 @@
       - /darknet/darknet detector train data/obj.data cfg/brains.5x4.cfg $VH_INPUTS_DIR/weights/brains.5x4_190000.weights -gpus 0,1,2,3
     inputs:
       - name: images
-        default: http://k.moonq.org/slush/5-20171121.tar
+        default: http://k.moonq.org/slush/5-20171122.tar
       - name: weights
         default: http://k.moonq.org/slush/brains/brains.5x4_190000.weights
 
