@@ -116,10 +116,10 @@
       - tar xf $VH_INPUTS_DIR/images/5-20171122c.tar
       - mkdir  $VH_OUTPUTS_DIR/backup 
       - ln -s $VH_OUTPUTS_DIR/backup backup
-      - /darknet/darknet detector train data/obj.data cfg/brains.5x4.cfg $VH_INPUTS_DIR/weights/yolo.weights 
+      - /darknet/darknet detector train data/obj.data cfg/brains.5x1.cfg $VH_INPUTS_DIR/weights/yolo.weights 
     inputs:
       - name: images
         default: http://k.moonq.org/slush/5-20171122c.tar
       - name: weights
-        default: http://k.moonq.org/pub/yolo.weigths
+        default: http://k.moonq.org/pub/yolo.weights
 
