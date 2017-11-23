@@ -121,5 +121,5 @@
       - name: images
         default: http://k.moonq.org/slush/5-20171122c.tar
       - name: weights
-        default: http://k.moonq.org/slush/brain5/no.brains.2000.weights
+        default: http://k.moonq.org/slush/brains5/no.brains.2000.weights
 
