@@ -101,7 +101,7 @@
       - tar xf $VH_INPUTS_DIR/images/5-20171122c.tar
       - mkdir  $VH_OUTPUTS_DIR/backup 
       - ln -s $VH_OUTPUTS_DIR/backup backup
-      - /darknet/darknet detector train data/obj.data cfg/brains.5x4.cfg $VH_INPUTS_DIR/weights/brains.5x4_206000.weights -gpus 0,1,2,3,4,5,6,7
+      - /darknet/darknet detector train data/obj.data cfg/brains.5x4.cfg $VH_INPUTS_DIR/weights/brains.5x4_206000.weights -gpus 0,1,2,3,4,5,6,7 | tee brains/log.txt | grep -B 2 --line-buffered images
     inputs:
       - name: images
         default: http://k.moonq.org/slush/5-20171122c.tar
