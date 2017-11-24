@@ -113,13 +113,13 @@
     image: valohai/darknet:b61bcf5-cuda8.0-cudnn5-devel-ubuntu16.04
     command: 
       - set -x
-      - tar xf $VH_INPUTS_DIR/images/5-20171122c.tar
+      - tar xf $VH_INPUTS_DIR/images/5-20171122d.tar
       - mkdir  $VH_OUTPUTS_DIR/backup 
       - ln -s $VH_OUTPUTS_DIR/backup backup
-      - /darknet/darknet detector train data/obj.data cfg/brains.5x4.cfg $VH_INPUTS_DIR/weights/no.brains.109000.weights -gpus 0,1,2,3,4,5,6,7 | tee brains/log.txt | grep -B 2 --line-buffered images
+      - /darknet/darknet detector train data/obj.data cfg/brains.5x4.cfg $VH_INPUTS_DIR/weights/no.brains.109000.weights -gpus 0,1,2,3,4,5,6,7 | tee brain/log.txt | grep -B 2 --line-buffered images
     inputs:
       - name: images
-        default: http://k.moonq.org/slush/5-20171122c.tar
+        default: http://k.moonq.org/slush/5-20171122d.tar
       - name: weights
         default: http://k.moonq.org/slush/brains5/no.brains.109000.weights
 
